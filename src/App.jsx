@@ -3,7 +3,7 @@ import './App.css';
 function App() {
   return (
     <div>
-      <h1>Mahesh</h1>
+      <h1>Bhavya Rambhai Chavda</h1>
     </div>
   );
 }
