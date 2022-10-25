@@ -1,10 +1,11 @@
 import './App.css';
+import MainView from './MainView/MainView';
 
 function App() {
   return (
-    <div>
-      <h1>Typing test is under maintenance. </h1>
-    </div>
+    <>
+      <MainView />
+    </>
   );
 }
 
