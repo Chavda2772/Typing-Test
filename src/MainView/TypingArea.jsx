@@ -1,35 +1,33 @@
-import React, { useState } from 'react';
+import { useState, Component } from 'react';
 
-function TypingArea({ onTypeChange }) {
+export default class TypingArea extends Component {
   // State Variables
-  let [inputVal, setInputVal] = useState('');
+  constructor() {
+    super();
+  }
+  // let [inputVal, setInputVal] = useState('');
 
   //Helper functions
-  function onInputChange(e) {
-    let breakWord = false;
+  onInputChange = (e) => {
     let inputStateVal = e.target.value;
 
     if (inputStateVal.endsWith(' ')) {
-      breakWord = true;
       e.target.value = '';
     }
 
-    onTypeChange(inputStateVal, breakWord);
-    if (inputStateVal.endsWith(' ')) setInputVal('');
+    this.props.onTypeChange(inputStateVal);
+  };
+
+  render() {
+    return (
+      <>
+        <input
+          className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+          type='text'
+          onChange={this.onInputChange}
+          autoComplete='off'
+        />
+      </>
+    );
   }
-
-  return (
-    <>
-      <input
-        className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-        type='text'
-        onChange={onInputChange}
-        autoComplete='off'
-        // value={inputVal}
-      ></input>
-      <button>Show : {inputVal}</button>
-    </>
-  );
 }
-
-export default TypingArea;

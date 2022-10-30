@@ -8,19 +8,17 @@ import TypingArea from './TypingArea';
 function MainView() {
   // Store
   const [typingVal, setTypingVal] = useState('');
-  const [isWordBreak, setIsWordBreak] = useState(false);
 
   // Helper functions
-  const onTypingChange = (typingVal, isWordBreak) => {
+  const onTypingChange = (typingVal) => {
     setTypingVal(typingVal);
-    setIsWordBreak(isWordBreak);
   };
 
   // Components
   return (
     <>
       <Header />
-      <ContentArea inputVal={typingVal} isWordBreak={isWordBreak} />
+      <ContentArea inputVal={typingVal} />
       <TypingArea onTypeChange={onTypingChange} />
     </>
   );
