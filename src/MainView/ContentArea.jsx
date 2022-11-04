@@ -1,4 +1,4 @@
-import react, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import WordDesign from './WordDesign';
 
 function ContentArea({ inputVal }) {
@@ -13,9 +13,7 @@ function ContentArea({ inputVal }) {
 
   // Watch Effect
   useEffect(() => {
-    setTypingContent(
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry'
-    );
+    setTypingContent('Lorem Ipsum is simply dummy');
   }, []);
 
   useEffect(() => {
@@ -27,8 +25,6 @@ function ContentArea({ inputVal }) {
     checkForWordBreak();
     checkInputWords();
   }, [inputVal]);
-
-  let refContainer = useRef();
 
   // Helper functions
   function checkForWordBreak() {
@@ -79,10 +75,17 @@ function ContentArea({ inputVal }) {
   // Components
   return (
     <>
-      <h1 className=''>{typingWords[wordIndexCount]}</h1>
-      <div className='container mx-auto' ref={refContainer}>
+      <div className='container mx-auto'>
         {typingWords.map((word, i) => {
-          return <WordDesign key={i} word={word} checkWord={''} />;
+          return (
+            <WordDesign
+              key={i}
+              word={word}
+              wordIndex={i}
+              wordIndexCount={wordIndexCount}
+              inputVal={inputVal}
+            />
+          );
         })}
       </div>
       {showResult ? (
