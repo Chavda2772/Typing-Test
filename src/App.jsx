@@ -3,11 +3,7 @@ import MainView from './MainView/MainView';
 import { Component } from 'react';
 
 function App() {
-  return (
-    <>
-      <MainView />
-    </>
-  );
+  return <MainView />;
 }
 
 export default App;
